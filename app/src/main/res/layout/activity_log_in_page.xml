@@ -28,13 +28,14 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#B80000"
+        android:layout_width="146dp"
+        android:layout_height="144dp"
+        android:backgroundTint="@color/white"
+        android:foreground="@mipmap/loginbutton_foreground"
         android:text="Sign In"
         android:textColor="#FFD700"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="456dp" />
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="449dp" />
 
     <Button
         android:id="@+id/button4"
