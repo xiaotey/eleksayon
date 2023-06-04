@@ -4,15 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:backgroundTint="#FFD700"
+    android:visibility="visible"
+    tools:context=".MainActivity"
+    tools:visibility="visible">
 
-    <TextView
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:backgroundTint="#B80000"
+        android:text="Admin"
+        android:textColor="#FFD700"
+        app:iconTint="#E1C325"
+        app:iconTintMode="add"
+        app:strokeColor="#C5B212"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="464dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#B80000"
+        android:text="Student"
+        android:textColor="#FFD700"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="519dp" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="353dp"
+        android:layout_height="425dp"
+        android:background="#FFFFFF"
+        app:srcCompat="@mipmap/ic_launcher_round"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="72dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
