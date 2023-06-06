@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">eleksayon</string>
     <string name="admin">Admin</string>
+    <string name="student">Student</string>
+    <string name="todo">TODO</string>
+    <string name="i_am_a">I am a ...</string>
 </resources>
