@@ -4,4 +4,12 @@
     <string name="student">Student</string>
     <string name="todo">TODO</string>
     <string name="i_am_a">I am a ...</string>
+    <string name="example_quot_bs_computer_engineering_quot">Example: \"BS Computer Engineering\"</string>
+    <string name="full_name">Full Name</string>
+    <string name="course">Course</string>
+    <string name="my_iit_e_mail">My.IIT E-Mail</string>
+    <string name="password">Password</string>
+    <string name="id_number">ID Number</string>
+    <string name="submit">Submit</string>
+
 </resources>
