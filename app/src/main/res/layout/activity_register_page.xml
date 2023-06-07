@@ -81,22 +81,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:inputType="number|phone"
         android:autofillHints=""
         android:background="@drawable/customtextview"
         android:drawableStart="@drawable/custom_numbers_icon"
         android:drawablePadding="6dp"
         android:ems="14"
+        android:hint="ID Number"
+        android:inputType="number|phone"
         android:paddingStart="7dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:hint="ID Number"
-        android:textColorHint="#808080"
         android:textColor="@color/black"
+        android:textColorHint="#808080"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     <Button
         android:id="@+id/button5"
