@@ -41,17 +41,19 @@ public class RegisterPage extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 String email = binding.EmailAddress.getText().toString();
+                String id = binding.idNumber.getText().toString();
+                String course = binding.spinner.getSelectedItem().toString();
                 String password = binding.editTextTextPassword.getText().toString();
                 String confirmPassword = binding.editTextTextPassword2.getText().toString();
 
                 if (email.equals("") || password.equals("") || confirmPassword.equals(""))
-                    Toast.makeText(RegisterPage.this, "All fields are mandatory", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterPage.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 else{
                     if (password.equals(confirmPassword)){
                         Boolean checkUserEmail = databaseHelper.checkEmail(email);
 
                         if (checkUserEmail == false){
-                            Boolean insert = databaseHelper.insertData(email, password);
+                            Boolean insert = databaseHelper.insertData(email, password, id, course);
 
                             if (insert == true){
                                 Toast.makeText(RegisterPage.this, "Signup successful", Toast.LENGTH_SHORT).show();
