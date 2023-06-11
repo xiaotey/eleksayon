@@ -1,4 +1,4 @@
 package com.example.eleksayon;
 
-public class DBHandlerAdmin {
+public class RegisterPageAdmin {
 }
