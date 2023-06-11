@@ -46,16 +46,18 @@ public class RegisterPage extends AppCompatActivity implements AdapterView.OnIte
                 String password = binding.editTextTextPassword.getText().toString();
                 String confirmPassword = binding.editTextTextPassword2.getText().toString();
 
-                if (email.equals("") || password.equals("") || confirmPassword.equals(""))
+                if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                     Toast.makeText(RegisterPage.this, "All fields are required", Toast.LENGTH_SHORT).show();
-                else{
+                } else if (!email.endsWith("@g.msuiit.edu.ph")) {
+                    Toast.makeText(RegisterPage.this, "Please use My.IIT email only", Toast.LENGTH_SHORT).show();
+                } else {
                     if (password.equals(confirmPassword)){
                         Boolean checkUserEmail = databaseHelper.checkEmail(email);
 
-                        if (checkUserEmail == false){
+                        if (!checkUserEmail){
                             Boolean insert = databaseHelper.insertData(email, password, id, course);
 
-                            if (insert == true){
+                            if (insert){
                                 Toast.makeText(RegisterPage.this, "Signup successful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), LogInPage.class);
                                 startActivity(intent);
@@ -87,7 +89,7 @@ public class RegisterPage extends AppCompatActivity implements AdapterView.OnIte
         items.add("BS Environmental Engineering");
         items.add("BS Mechanical Engineering");
         items.add("BS Metallurgical Engineering");
-        items.add("Chemical Engineering Technology");
+        items.add("BS Industrial Automation and Mechatronics");
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);

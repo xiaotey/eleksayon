@@ -1,10 +1,12 @@
 package com.example.eleksayon;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import androidx.annotation.Nullable;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -47,13 +49,13 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public Boolean checkEmail(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM allusers WHERE email = ?", new String[]{email});
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM allusers WHERE email = ?", new String[]{email});
         return cursor.getCount() > 0;
     }
 
     public Boolean checkEmailPassword(String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM allusers WHERE email = ? AND password = ?", new String[]{email, password});
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM allusers WHERE email = ? AND password = ?", new String[]{email, password});
         return cursor.getCount() > 0;
     }
 }
