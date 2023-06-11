@@ -2,6 +2,7 @@ package com.example.eleksayon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -13,12 +14,17 @@ import android.text.TextWatcher;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
+import com.example.eleksayon.databinding.ActivityRegisterPageBinding;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RegisterPage extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-        Button button5;
+    ActivityRegisterPageBinding binding;
+    DBHandler databaseHelper;
+
+        Button signupButton;
         private EditText editTextTextPassword;
         private EditText editTextTextPassword2;
 
@@ -26,51 +32,44 @@ public class RegisterPage extends AppCompatActivity implements AdapterView.OnIte
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_page);
+        binding = ActivityRegisterPageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        button5 = findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener(){
+        databaseHelper = new DBHandler(this);
 
+        binding.signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                showToast("Account Created");
-            }
-        });
+            public void onClick(View view) {
+                String email = binding.EmailAddress.getText().toString();
+                String password = binding.editTextTextPassword.getText().toString();
+                String confirmPassword = binding.editTextTextPassword2.getText().toString();
 
+                if (email.equals("") || password.equals("") || confirmPassword.equals(""))
+                    Toast.makeText(RegisterPage.this, "All fields are mandatory", Toast.LENGTH_SHORT).show();
+                else{
+                    if (password.equals(confirmPassword)){
+                        Boolean checkUserEmail = databaseHelper.checkEmail(email);
 
+                        if (checkUserEmail == false){
+                            Boolean insert = databaseHelper.insertData(email, password);
 
-        editTextTextPassword = findViewById(R.id.editTextTextPassword);
-        editTextTextPassword2 = findViewById(R.id.editTextTextPassword2);
-        button5 = findViewById(R.id.button5);
-
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String password = editTextTextPassword.getText().toString();
-                String confirmPassword = editTextTextPassword2.getText().toString();
-
-                if (password.equals(confirmPassword)) {
-                    showToast("Account Created");
-                } else {
-                    showToast("Password do not match");
+                            if (insert == true){
+                                Toast.makeText(RegisterPage.this, "Signup successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), LogInPage.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(RegisterPage.this, "Signup failed", Toast.LENGTH_SHORT).show();
+                            }
+                        }else {
+                            Toast.makeText(RegisterPage.this, "User already exists, please login", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
+                        Toast.makeText(RegisterPage.this, "Invalid Password", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
 
-        editTextTextPassword2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                checkPasswordsMatch();
-            }
-        });
 
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
@@ -83,10 +82,8 @@ public class RegisterPage extends AppCompatActivity implements AdapterView.OnIte
         items.add("BS Ceramics Engineering");
         items.add("BS Chemical Engineering");
         items.add("BS Mining Engineering");
-        items.add("BS Civil Engineering");
         items.add("BS Environmental Engineering");
         items.add("BS Mechanical Engineering");
-        items.add("BS Metallurgical Engineering");
         items.add("BS Metallurgical Engineering");
         items.add("Chemical Engineering Technology");
 
