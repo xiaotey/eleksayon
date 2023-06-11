@@ -31,7 +31,7 @@
         tools:ignore="LabelFor,RtlSymmetry,TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/EmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="216dp"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/signupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="420dp"
