@@ -13,7 +13,7 @@
         android:id="@+id/button"
         android:layout_width="129dp"
         android:layout_height="61dp"
-
+        app:cornerRadius="30dp"
         android:layout_marginStart="144dp"
         android:layout_marginTop="89dp"
         android:backgroundTint="#B80000"
@@ -34,6 +34,7 @@
         android:layout_marginTop="71dp"
         android:backgroundTint="#B80000"
         android:text="@string/student"
+        app:cornerRadius="30dp"
         android:textColor="#FFD700"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView10"

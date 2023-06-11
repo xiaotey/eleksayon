@@ -8,6 +8,15 @@
     tools:context=".LogInPage">
 
 
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="347dp"
+        android:layout_height="237dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="336dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/customtextview" />
 
     <Button
         android:id="@+id/button4"
@@ -53,13 +62,13 @@
         android:drawableStart="@drawable/custom_email_icon"
         android:drawablePadding="6dp"
         android:ems="13"
+        android:hint="My.IIT E-mail"
         android:inputType="textEmailAddress"
         android:paddingStart="7dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:hint="My.IIT E-mail"
-        android:textColorHint="#808080"
         android:textColor="@color/black"
+        android:textColorHint="#808080"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,10 +82,11 @@
         android:layout_marginStart="136dp"
         android:layout_marginTop="224dp"
         android:backgroundTint="#b80000"
-        android:radius="50dp"
         android:foregroundGravity="fill"
+        android:radius="50dp"
         android:text="Sign In"
         android:textColor="#FFD700"
+        app:cornerRadius="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -91,13 +101,13 @@
         android:drawableStart="@drawable/custom_lock_icon"
         android:drawablePadding="6dp"
         android:ems="13"
+        android:hint="Enter Password"
         android:inputType="textPassword"
         android:paddingStart="7dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:hint="Enter Password"
-        android:textColorHint="#808080"
         android:textColor="@color/black"
+        android:textColorHint="#808080"
         android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
