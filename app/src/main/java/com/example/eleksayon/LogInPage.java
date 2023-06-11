@@ -6,20 +6,47 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.eleksayon.databinding.ActivityLogInPageBinding;
 
 
 public class LogInPage extends AppCompatActivity {
 
-    Button button4;
+    ActivityLogInPageBinding binding;
+    DBHandler databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in_page);
+        binding = ActivityLogInPageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        button4 = findViewById(R.id.button4);
+        databaseHelper = new DBHandler(this);
 
-        button4.setOnClickListener(new View.OnClickListener() {
+        binding.loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = binding.loginEmail.getText().toString();
+                String password = binding.loginPassword.getText().toString();
+
+                if (email.equals("")|| password.equals(""))
+                    Toast.makeText(LogInPage.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                else{
+                    Boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
+
+                    if (checkCredentials == true){
+                        Toast.makeText(LogInPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(LogInPage.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        binding.registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LogInPage.this, RegisterPage.class);

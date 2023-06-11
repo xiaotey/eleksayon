@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/customtextview" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="260dp"
@@ -52,7 +52,7 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/loginEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
@@ -76,7 +76,7 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/loginButton"
         android:layout_width="135dp"
         android:layout_height="50dp"
         android:layout_marginStart="136dp"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/loginPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="69dp"

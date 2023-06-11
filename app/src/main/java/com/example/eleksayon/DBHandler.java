@@ -18,7 +18,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDatabase) {
-        MyDatabase.execSQL("create Table allusers(email TEXT primary key, password TEXT, id INT, course STRING)");
+        MyDatabase.execSQL("create Table allusers(email TEXT primary key, password TEXT, id TEXT, course TEXT)");
 
     }
 
@@ -27,11 +27,13 @@ public class DBHandler extends SQLiteOpenHelper {
         MyDatabase.execSQL("drop Table if exists allusers");
     }
 
-    public Boolean insertData(String email, String password){
+    public Boolean insertData(String email, String password, String id, String course){
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("email", email);
         contentValues.put("password", password);
+        contentValues.put("id", id);
+        contentValues.put("course", course);
         long result = MyDatabase.insert("allusers", null, contentValues);
 
         if(result == -1){
