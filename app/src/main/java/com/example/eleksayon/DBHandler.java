@@ -58,4 +58,16 @@ public class DBHandler extends SQLiteOpenHelper {
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM allusers WHERE email = ? AND password = ?", new String[]{email, password});
         return cursor.getCount() > 0;
     }
+
+    public Boolean checkEmailAdmin(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM adminusers WHERE email = ?", new String[]{email});
+        return cursor.getCount() > 0;
+    }
+
+    public Boolean checkEmailPasswordAdmin(String email, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM adminusers WHERE email = ? AND password = ?", new String[]{email, password});
+        return cursor.getCount() > 0;
+    }
 }
