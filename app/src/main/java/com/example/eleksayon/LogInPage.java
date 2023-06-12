@@ -34,12 +34,17 @@ public class LogInPage extends AppCompatActivity {
                     Toast.makeText(LogInPage.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 else{
                     Boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
+                    Boolean checkAdminRights = databaseHelper.checkEmailPasswordAdmin(email, password);
 
-                    if (checkCredentials == true){
+                    if (checkCredentials == true) {
                         Toast.makeText(LogInPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
-                    }else{
+                    } else if (checkAdminRights == true) {
+                            Toast.makeText(LogInPage.this, "Admin Login Successful", Toast.LENGTH_SHORT).show();
+                            Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent1);
+                    } else if (checkCredentials == false || checkAdminRights == false){
                         Toast.makeText(LogInPage.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
                 }
