@@ -43,7 +43,7 @@ public class LogInPage extends AppCompatActivity {
                         startActivity(intent);
                     } else if (checkAdminRights == true) {
                             Toast.makeText(LogInPage.this, "Admin Login Successful", Toast.LENGTH_SHORT).show();
-                            Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent1 = new Intent(getApplicationContext(), AdminDashboard.class);
                             startActivity(intent1);
                     } else if (checkCredentials == false || checkAdminRights == false){
                         Toast.makeText(LogInPage.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
