@@ -138,9 +138,11 @@
         android:id="@+id/spinner"
         android:layout_width="311dp"
         android:layout_height="43dp"
-        android:layout_marginStart="51dp"
+        android:layout_marginStart="49dp"
         android:layout_marginTop="312dp"
+        android:layout_marginEnd="51dp"
         android:background="@drawable/customtextview"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

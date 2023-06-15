@@ -13,7 +13,7 @@
         tools:targetApi="31">
         <activity
             android:name=".AddCandidate"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".AdminDashboard"
             android:exported="false" />
