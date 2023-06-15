@@ -21,5 +21,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_login_page_admin">LoginPageAdmin</string>
+    <string name="add_string">ADD</string>
 
 </resources>

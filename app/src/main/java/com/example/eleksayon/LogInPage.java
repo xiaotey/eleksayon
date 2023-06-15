@@ -16,6 +16,7 @@ public class LogInPage extends AppCompatActivity {
     ActivityLogInPageBinding binding;
     DBHandler databaseHelper;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

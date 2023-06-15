@@ -12,6 +12,12 @@
         android:theme="@style/Theme.Eleksayon"
         tools:targetApi="31">
         <activity
+            android:name=".AddCandidate"
+            android:exported="false" />
+        <activity
+            android:name=".AdminDashboard"
+            android:exported="false" />
+        <activity
             android:name=".ui.login.LogInPageAdmin"
             android:exported="false"
             android:label="@string/title_activity_log_in_page_admin" />
