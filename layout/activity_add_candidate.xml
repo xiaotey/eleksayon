@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddCandidate">
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="276dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#B80000"
+        android:foregroundGravity="fill"
+        android:text="Create Candidate"
+        android:textColor="#FFD700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="120dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="24dp"
+        android:tint="#B80000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_document_scanner_24" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="349dp"
+        android:layout_height="35dp"
+        android:background="@drawable/customtextview"
+        android:drawablePadding="6dp"
+        android:ems="14"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="175dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName8"
+        android:layout_width="354dp"
+        android:layout_height="132dp"
+        android:background="@drawable/customtextview"
+        android:drawablePadding="6dp"
+        android:ems="14"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="535dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="349dp"
+        android:layout_height="35dp"
+        android:background="@drawable/customtextview"
+        android:drawablePadding="6dp"
+        android:ems="14"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="244dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName6"
+        android:layout_width="138dp"
+        android:layout_height="35dp"
+        android:background="@drawable/customtextview"
+        android:drawablePadding="6dp"
+        android:ems="14"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="316dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName10"
+        android:layout_width="138dp"
+        android:layout_height="35dp"
+        android:background="@drawable/customtextview"
+        android:drawablePadding="6dp"
+        android:ems="14"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="395dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName9"
+        android:layout_width="349dp"
+        android:layout_height="35dp"
+        android:background="@drawable/customtextview"
+        android:drawablePadding="6dp"
+        android:ems="14"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="464dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="86dp"
+        android:layout_height="26dp"
+        android:text="First Name"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="149dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="86dp"
+        android:layout_height="26dp"
+        android:text="Last Name"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="218dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="86dp"
+        android:layout_height="26dp"
+        android:text="Year Level"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="244dp"
+        tools:layout_editor_absoluteY="290dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="86dp"
+        android:layout_height="26dp"
+        android:text="1by1"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="292dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="86dp"
+        android:layout_height="26dp"
+        android:text="Course"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="242dp"
+        tools:layout_editor_absoluteY="369dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="86dp"
+        android:layout_height="26dp"
+        android:text="Position"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="438dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="86dp"
+        android:layout_height="26dp"
+        android:text="Platforms"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="509dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="99dp"
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="44dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
