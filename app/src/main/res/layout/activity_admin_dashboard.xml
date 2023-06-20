@@ -9,200 +9,186 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
         android:background="#e3e3e3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Background"
+        android:layout_width="413dp"
+        android:layout_height="84dp"
+        android:background="@color/maroon"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Dashboard"
+        android:layout_width="192dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Dashboard"
+        android:textColor="@color/gold"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="28dp" />
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="411dp"
-        android:layout_height="89dp"
+        android:id="@+id/BackStyle"
+        android:layout_width="415dp"
+        android:layout_height="123dp"
+        android:layout_marginBottom="548dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/bottom_bar"
-        app:tint="#B80000" />
+        app:srcCompat="@drawable/button_background"
+        app:tint="@color/maroon" />
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="173dp"
-        android:layout_height="269dp"
+        android:id="@+id/CalendarButtonBackground"
+        android:layout_width="167dp"
+        android:layout_height="246dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="120dp"
-
+        android:layout_marginTop="124dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/customtextview" />
+        app:srcCompat="@drawable/button_background"
+        app:tint="#FFFFFF" />
 
     <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="173dp"
-        android:layout_height="269dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="120dp"
-
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/ViewButtonBackground"
+        android:layout_width="167dp"
+        android:layout_height="246dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/customtextview" />
+        app:srcCompat="@drawable/button_background"
+        app:tint="#FFFFFF" />
 
     <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="173dp"
-        android:layout_height="269dp"
+        android:id="@+id/AddCandidateButtonBackground"
+        android:layout_width="167dp"
+        android:layout_height="246dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="404dp"
-
+        android:layout_marginBottom="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/customtextview" />
+        app:srcCompat="@drawable/button_background"
+        app:tint="#FFFFFF" />
 
     <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="173dp"
-        android:layout_height="269dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="404dp"
+        android:id="@+id/imageView7"
+        android:layout_width="167dp"
+        android:layout_height="246dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/button_background"
+        app:tint="#FFFFFF" />
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/customtextview" />
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/CalendarButtonBackground"
+        app:layout_constraintEnd_toEndOf="@+id/CalendarButtonBackground"
+        app:layout_constraintStart_toStartOf="@+id/CalendarButtonBackground"
+        app:layout_constraintTop_toTopOf="@+id/CalendarButtonBackground"
+        app:srcCompat="@drawable/calendar" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="69dp"
+        android:layout_height="62dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewButtonBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ViewButtonBackground"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="@+id/ViewButtonBackground"
+        app:layout_constraintTop_toTopOf="@+id/ViewButtonBackground"
+        app:layout_constraintVertical_bias="0.491"
+        app:srcCompat="@drawable/baseline_remove_red_eye_24"
+        app:tint="@color/maroon" />
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="87dp"
-        android:layout_height="96dp"
-        android:background="#FFFFFF"
-        app:tint="#B80000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.436"
-        app:srcCompat="@drawable/calendar" />
-
-    <TextView
-        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VOTING DATE"
-        android:textColor="#FFD700"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton4"
-        app:layout_constraintStart_toStartOf="@+id/imageButton4" />
-
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/AddCandidateButtonBackground"
+        app:layout_constraintEnd_toEndOf="@+id/AddCandidateButtonBackground"
+        app:layout_constraintStart_toStartOf="@+id/AddCandidateButtonBackground"
+        app:layout_constraintTop_toTopOf="@+id/AddCandidateButtonBackground"
+        app:srcCompat="@drawable/baseline_group_add_24"
+        app:tint="@color/maroon" />
 
     <ImageButton
-        android:id="@+id/imageButton11"
-        android:layout_width="87dp"
-        android:layout_height="96dp"
-        android:background="#FFFFFF"
-        app:tint="#B80000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView12"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="@+id/imageView12"
-        app:layout_constraintTop_toTopOf="@+id/imageView12"
-        app:layout_constraintVertical_bias="0.436"
-        app:srcCompat="@drawable/baseline_remove_red_eye_24"
-        tools:ignore="UseAppTint" />
-
-    <ImageButton
-        android:id="@+id/AddButton"
-        android:layout_width="87dp"
-        android:layout_height="96dp"
-        android:background="#FFFFFF"
-        app:tint="#B80000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-        app:layout_constraintEnd_toEndOf="@+id/imageView11"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11"
-        app:layout_constraintVertical_bias="0.495"
-        app:srcCompat="@drawable/baseline_group_add_24" />
-
-    <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/LogOutButtonBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="@string/add_string"
-        android:textColor="#FFD700"
+        android:background="#FFFFFF"
+        app:srcCompat="@drawable/baseline_logout_24"
+        app:tint="@color/maroon"
+        tools:layout_editor_absoluteX="283dp"
+        tools:layout_editor_absoluteY="518dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD CANDIDATE"
+        android:textColor="@color/gold"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/AddButton"
-        app:layout_constraintEnd_toEndOf="@+id/AddButton"
-        app:layout_constraintHorizontal_bias="0.406"
-        app:layout_constraintStart_toStartOf="@+id/AddButton"
-        app:layout_constraintTop_toTopOf="@+id/AddButton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/AddCandidateButtonBackground"
+        app:layout_constraintEnd_toEndOf="@+id/AddCandidateButtonBackground"
+        app:layout_constraintStart_toStartOf="@+id/AddCandidateButtonBackground"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOG OUT"
+        android:textColor="@color/gold"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="607dp" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="VIEW"
-        android:textColor="#FFD700"
+        android:textColor="@color/gold"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton11"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton11"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="@+id/imageButton11"
-        app:layout_constraintTop_toTopOf="@+id/imageButton11"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageButton
-        android:id="@+id/imageButton13"
-        android:layout_width="87dp"
-        android:layout_height="96dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView13"
-        app:layout_constraintEnd_toEndOf="@+id/imageView13"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="@+id/imageView13"
-        app:layout_constraintTop_toTopOf="@+id/imageView13"
-        app:srcCompat="@drawable/baseline_logout_24"
-        app:tint="#B80000" />
+        app:layout_constraintBottom_toBottomOf="@+id/ViewButtonBackground"
+        app:layout_constraintEnd_toEndOf="@+id/ViewButtonBackground"
+        app:layout_constraintStart_toStartOf="@+id/ViewButtonBackground"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="74dp"
-        android:layout_height="19dp"
-        android:text="LOG OUT"
-        android:textColor="#FFD700"
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CALENDAR"
+        android:textColor="@color/gold"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton13"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton13"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/imageButton13"
-        app:layout_constraintTop_toTopOf="@+id/imageButton13"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="238dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="24dp"
-        android:gravity="left"
-        android:text="DASHBOARD"
-        android:textColor="#FFD700"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
+        app:layout_constraintBottom_toBottomOf="@+id/CalendarButtonBackground"
+        app:layout_constraintEnd_toEndOf="@+id/CalendarButtonBackground"
+        app:layout_constraintStart_toStartOf="@+id/CalendarButtonBackground"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintVertical_bias="0.556" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
