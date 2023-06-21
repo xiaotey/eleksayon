@@ -34,12 +34,13 @@
         android:layout_width="192dp"
         android:layout_height="38dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Dashboard"
         android:textColor="@color/gold"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="28dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/BackStyle"
@@ -98,7 +99,7 @@
         app:tint="#FFFFFF" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/calendarbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -139,10 +140,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7"
         app:srcCompat="@drawable/baseline_logout_24"
-        app:tint="@color/maroon"
-        tools:layout_editor_absoluteX="283dp"
-        tools:layout_editor_absoluteY="518dp" />
+        app:tint="@color/maroon" />
 
     <TextView
         android:id="@+id/textView8"
@@ -163,8 +166,11 @@
         android:text="LOG OUT"
         android:textColor="@color/gold"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="607dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/LogOutButtonBackground" />
 
     <TextView
         android:id="@+id/textView7"
@@ -182,13 +188,15 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="CALENDAR"
         android:textColor="@color/gold"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/CalendarButtonBackground"
         app:layout_constraintEnd_toEndOf="@+id/CalendarButtonBackground"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/CalendarButtonBackground"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintTop_toBottomOf="@+id/calendarbutton"
         app:layout_constraintVertical_bias="0.556" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
