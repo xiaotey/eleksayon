@@ -42,20 +42,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/BackStyle"
-        android:layout_width="415dp"
-        android:layout_height="123dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginBottom="532dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/button_background"
-        app:tint="@color/maroon" />
-
-    <ImageView
         android:id="@+id/CalendarButtonBackground"
         android:layout_width="167dp"
         android:layout_height="246dp"
