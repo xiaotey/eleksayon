@@ -5,24 +5,24 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import androidx.annotation.Nullable;
 
 public class DBHandler extends SQLiteOpenHelper {
 
-    public static final String databaseName_1 = "Students.db";
-    public static final String databaseName_2 = "Admins.db";
-    public static final String databaseName_3 = "Participants.db";
+    public static final String databaseName = "Students.db";
 
     public DBHandler(@Nullable Context context) {
-        super(context, databaseName_1, null, 1);
+        super(context, databaseName, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE allusers(email TEXT PRIMARY KEY, password TEXT, id TEXT, course TEXT)");
+        db.execSQL("CREATE TABLE allusers(email TEXT PRIMARY KEY, password TEXT, id TEXT, course TEXT, status BOOELAN)");
         db.execSQL("CREATE TABLE adminusers(email TEXT PRIMARY KEY, password TEXT, id TEXT, course TEXT)");
-        db.execSQL("CREATE TABLE participants(id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT, year_level TEXT, course TEXT, position TEXT, platform TEXT)");
+        db.execSQL("CREATE TABLE participants(first_name TEXT PRIMARY KEY AUTOINCREMENT, last_name TEXT, img BLOB, year_level TEXT, course TEXT, position TEXT, platform TEXT)");
         ContentValues adminValues = new ContentValues();
         adminValues.put("email", "jawhara.amirol@g.msuiit.edu.ph");
         adminValues.put("password", "12345");
@@ -48,7 +48,18 @@ public class DBHandler extends SQLiteOpenHelper {
         long result = db.insert("allusers", null, contentValues);
         return result != -1;
     }
-
+    public Boolean insertParticipants(String first_name, String last_name, String year_level, String course, String position, String platform) throws SQLiteException {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("first name", first_name);
+        contentValues.put("last name", last_name);
+        contentValues.put("year level", year_level);
+        contentValues.put("course", course);
+        contentValues.put("position", position);
+        contentValues.put("platform", platform);
+        long result = db.insert("participants", null, contentValues);
+        return result != -1;
+    }
     public Boolean checkEmail(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM allusers WHERE email = ?", new String[]{email});
@@ -73,17 +84,5 @@ public class DBHandler extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
-    public Boolean insertParticipant(String firstName, String lastName, String yearLevel, String course, String position, String platform) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("first_name", firstName);
-        contentValues.put("last_name", lastName);
-        contentValues.put("year_level", yearLevel);
-        contentValues.put("course", course);
-        contentValues.put("position", position);
-        contentValues.put("platform", platform);
-        long result = db.insert("participants", null, contentValues);
-        return result != -1;
-    }
 
 }

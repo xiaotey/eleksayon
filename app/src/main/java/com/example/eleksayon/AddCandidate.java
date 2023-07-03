@@ -20,24 +20,48 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
 import com.example.eleksayon.R;
+import com.example.eleksayon.databinding.ActivityAddCandidateBinding;
+import com.example.eleksayon.databinding.ActivityRegisterPageBinding;
 
 import java.io.IOException;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddCandidate extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    ActivityAddCandidateBinding binding;
+    DBHandler databaseHelper;
     private ImageView uploadedImage;
     private static final int SELECT_IMAGE_REQUEST = 1;
-
     private Button btnUpload;
     private ImageView imagePreview;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_candidate);
+        binding = ActivityAddCandidateBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        databaseHelper = new DBHandler(this);
+
+        binding.button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String first_name = binding.editTextTextPersonName3.getText().toString();
+                String last_name = binding.editTextTextPersonName.getText().toString();
+                String year_level = binding.spinner4.getSelectedItem().toString();
+                String course = binding.spinner3.getSelectedItem().toString();
+                String position = binding.spinner2.getSelectedItem().toString();
+                String platform = binding.editTextTextPersonName8.getText().toString();
+                databaseHelper.insertParticipants(first_name, last_name, year_level, course, position, platform);
+                Toast.makeText(AddCandidate.this, "Participant added", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), AddCandidate.class);
+                startActivity(intent);
+            }
+        });
 
         Spinner spinner2 = findViewById(R.id.spinner2);
 
@@ -104,6 +128,7 @@ public class AddCandidate extends AppCompatActivity implements AdapterView.OnIte
                 openGallery();
             }
         });
+
     }
 
 

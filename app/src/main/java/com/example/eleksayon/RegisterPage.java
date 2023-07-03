@@ -24,7 +24,6 @@ public class RegisterPage extends AppCompatActivity implements AdapterView.OnIte
     ActivityRegisterPageBinding binding;
     DBHandler databaseHelper;
 
-        Button signupButton;
         private EditText editTextTextPassword;
         private EditText editTextTextPassword2;
 
