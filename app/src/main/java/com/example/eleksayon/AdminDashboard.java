@@ -9,30 +9,40 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 public class AdminDashboard extends AppCompatActivity {
 
-    private ImageButton calendarbutton;
-    ImageButton imageButton4;
-
+    private ImageButton addButton;
+    private ImageButton calendarButton;
+    private ImageButton logoutButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
-        calendarbutton = findViewById(R.id.imageButton4);
-       calendarbutton.setOnClickListener(new View.OnClickListener() {
+        addButton = findViewById(R.id.imageButton4);
+       addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AdminDashboard.this, AddCandidate.class);
                 startActivity(intent);
             }
         });
+        logoutButton = findViewById(R.id.LogOutButtonBackground);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(AdminDashboard.this, "Logout Successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AdminDashboard.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        calendarbutton = findViewById(R.id.calendarbutton);
-        calendarbutton.setOnClickListener(new View.OnClickListener() {
+        calendarButton = findViewById(R.id.calendarbutton);
+        calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -40,10 +50,6 @@ public class AdminDashboard extends AppCompatActivity {
 
             }
         });
-
-
-
-
         }
         private void openDialog(){
 
