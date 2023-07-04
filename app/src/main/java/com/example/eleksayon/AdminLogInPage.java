@@ -7,23 +7,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.eleksayon.databinding.ActivityStudentVoteBinding;
+public class AdminLogInPage extends AppCompatActivity {
 
-public class student_dashboard extends AppCompatActivity {
-    public Button vote_button;
+    Button studentsigninButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_dashboard);
+        setContentView(R.layout.activity_log_in_page_admin);
 
-        vote_button = findViewById(R.id.vote_button);
-        vote_button.setOnClickListener(new View.OnClickListener() {
+        studentsigninButton = findViewById(R.id.studentsigninButton);
+
+        studentsigninButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(student_dashboard.this, StudentVoteActivity.class);
+                Intent intent = new Intent(AdminLogInPage.this, LogInPage.class);
                 startActivity(intent);
             }
         });
-
     }
 }

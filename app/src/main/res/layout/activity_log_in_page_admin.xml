@@ -8,6 +8,19 @@
     tools:context=".LogInPage">
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to"
+        android:textColor="#808080"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.91" />
+
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="347dp"
@@ -19,11 +32,11 @@
         app:srcCompat="@drawable/customtextview" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/studentsigninButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#B80000"
-        android:text="Register"
+        android:text="Student log in"
         android:textColor="#FFD700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,19 +45,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
         tools:ignore="VisualLintBounds" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No Account?"
-        android:textColor="#808080"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.91" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -88,7 +88,7 @@
         android:backgroundTint="#b80000"
         android:foregroundGravity="fill"
         android:radius="50dp"
-        android:text="Log In"
+        android:text="Admin login"
         android:textColor="#FFD700"
         app:cornerRadius="30dp"
         app:layout_constraintStart_toStartOf="parent"
