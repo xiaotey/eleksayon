@@ -38,24 +38,8 @@ public class AddCandidate extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_candidate);
 
-
-        databaseHelper = new DBHandler(this);
-
-        binding.button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String firstName = binding.editTextTextPersonName3.getText().toString();
-                String lastName = binding.editTextTextPersonName.getText().toString();
-                String yearLevel = binding.spinner4.getSelectedItem().toString();
-                String course = binding.spinner3.getSelectedItem().toString();
-                String position = binding.spinner2.getSelectedItem().toString();
-                String platform = binding.editTextTextPersonName8.getText().toString();
-                databaseHelper.insertParticipant(firstName, lastName, yearLevel, course, position, platform);
-                Toast.makeText(AddCandidate.this, "Participant added", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), AdminDashboard.class);
-                startActivity(intent);
-            }
-        });
+        // Initialize DBHandler instance
+        dbHandler = new DBHandler(this);
 
         Spinner spinner2 = findViewById(R.id.spinner2);
         List<String> positions = new ArrayList<>();
