@@ -10,7 +10,6 @@
         android:id="@+id/vote_button"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:android
         android:background="@drawable/vote"
         android:foreground="@drawable/vote"
         app:layout_constraintBottom_toBottomOf="parent"
