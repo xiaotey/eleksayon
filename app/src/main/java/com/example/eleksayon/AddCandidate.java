@@ -56,7 +56,7 @@ public class AddCandidate extends AppCompatActivity implements AdapterView.OnIte
                 String platform = binding.editTextTextPersonName8.getText().toString();
                 databaseHelper.insertParticipant(firstName, lastName, yearLevel, course, position, platform);
                 Toast.makeText(AddCandidate.this, "Participant added", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), AddCandidate.class);
+                Intent intent = new Intent(getApplicationContext(), AdminDashboard.class);
                 startActivity(intent);
             }
         });
