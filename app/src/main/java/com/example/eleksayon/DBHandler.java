@@ -16,7 +16,7 @@ import java.io.IOException;
 public class DBHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "MainDatabase.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String TABLE_VOTERS = "voters";
     private static final String TABLE_ADMINS = "admins";
@@ -46,11 +46,11 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createVotersTable = "CREATE TABLE " + TABLE_VOTERS + " (email TEXT PRIMARY KEY, password TEXT, id TEXT, course TEXT, has_voted INTEGER DEFAULT 0)";
         String createAdminUsersTable = "CREATE TABLE " + TABLE_ADMINS + " (email TEXT PRIMARY KEY, password TEXT, id TEXT, course TEXT)";
-        String createParticipantsTable = "CREATE TABLE " + TABLE_CANDIDATES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT, year_level TEXT, course TEXT, position TEXT, platform TEXT, image_path TEXT)";
+        String createCandidatesTable = "CREATE TABLE " + TABLE_CANDIDATES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, year_level TEXT, course_candidate TEXT, image_path TEXT, first_name TEXT, position TEXT, platform TEXT, last_name TEXT)";
 
         db.execSQL(createVotersTable);
         db.execSQL(createAdminUsersTable);
-        db.execSQL(createParticipantsTable);
+        db.execSQL(createCandidatesTable);
 
         ContentValues adminValues = new ContentValues();
         adminValues.put(COLUMN_EMAIL, "jawhara.amirol@g.msuiit.edu.ph");
@@ -61,6 +61,11 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (oldVersion < 2) {
+            // Add the new column
+            String alterTableQuery = "ALTER TABLE " + TABLE_CANDIDATES + " ADD COLUMN " + COLUMN_COURSE_CANDIDATE + " TEXT";
+            db.execSQL(alterTableQuery);
+        }
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VOTERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ADMINS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CANDIDATES);
