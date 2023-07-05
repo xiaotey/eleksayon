@@ -1,6 +1,7 @@
 package com.example.eleksayon;
 
 public class Candidate {
+    private int id;
     private String firstName;
     private String lastName;
     private String yearLevel;
@@ -9,7 +10,8 @@ public class Candidate {
     private String platform;
     private String imagePath;
 
-    public Candidate(String firstName, String lastName, String yearLevel, String courseCandidate, String position, String platform, String imagePath) {
+    public Candidate(int id, String firstName, String lastName, String yearLevel, String courseCandidate, String position, String platform, String imagePath) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.yearLevel = yearLevel;
@@ -35,5 +37,8 @@ public class Candidate {
 
     public String getImagePath() {
         return imagePath;
+    }
+    public int getId() {
+        return id; // Replace 'id' with the actual identifier field in your Candidate class
     }
 }

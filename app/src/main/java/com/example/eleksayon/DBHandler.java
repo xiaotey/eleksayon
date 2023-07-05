@@ -199,7 +199,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 String platform = platformIndex != -1 ? cursor.getString(platformIndex) : "";
                 String imagePath = imagePathIndex != -1 ? cursor.getString(imagePathIndex) : "";
 
-                Candidate candidate = new Candidate(firstName, lastName, yearLevel, courseCandidate, position, platform, imagePath);
+                Candidate candidate = new Candidate(id, firstName, lastName, yearLevel, courseCandidate, position, platform, imagePath);
                 candidateList.add(candidate);
             } while (cursor.moveToNext());
         }
