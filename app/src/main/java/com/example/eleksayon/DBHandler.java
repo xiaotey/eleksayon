@@ -8,7 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.os.Environment;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -162,5 +163,26 @@ public class DBHandler extends SQLiteOpenHelper {
         private String generateUniqueFileName() {
         long timestamp = System.currentTimeMillis();
         return "image_" + timestamp + ".jpg";
+    }
+    public List<Candidate> getAllCandidates() {
+        List<Candidate> candidateList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CANDIDATES, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(KEY_ID));
+                String name = cursor.getString(cursor.getColumnIndex(KEY_NAME));
+                String position = cursor.getString(cursor.getColumnIndex(KEY_POSITION));
+                String description = cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION));
+                String imagePath = cursor.getString(cursor.getColumnIndex(KEY_IMAGE_PATH));
+                Candidate candidate = new Candidate(name, position, description, imagePath);
+                candidateList.add(candidate);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return candidateList;
     }
 }

@@ -1,51 +1,41 @@
 package com.example.eleksayon;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentVoteActivity extends AppCompatActivity {
 
-    private Button voteButton1;
-    private Button voteButton2;
-    private boolean isPressMeVisible = true;
-
+    private RecyclerView recyclerView;
+    private CandidateAdapter candidateAdapter;
+    private List<Candidate> candidateList;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_vote);
 
-        voteButton1 = findViewById(R.id.vote_button_1);
-        voteButton2 = findViewById(R.id.vote_button_2);
-    }
+        // Initialize the DBHandler
+        dbHandler = new DBHandler(this);
 
+        // Initialize the RecyclerView
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-    public void onvoteButton1Clicked(View view) {
-        isPressMeVisible = false;
-        updateButtonVisibility();
-    }
+        // Retrieve candidate data from the database
+        candidateList = dbHandler.getAllCandidates();
 
-    public void onvoteButton2Clicked(View view) {
-        isPressMeVisible = true;
-        updateButtonVisibility();
-    }
+        // Initialize the CandidateAdapter with the candidateList
+        candidateAdapter = new CandidateAdapter(this, candidateList);
 
-    private void updateButtonVisibility() {
-        if (isPressMeVisible) {
-            voteButton1.setVisibility(View.VISIBLE);
-            voteButton2.setVisibility(View.GONE);
-            Toast.makeText(this, "You have voted for this Candidate.", Toast.LENGTH_SHORT).show();
-        } else {
-            voteButton1.setVisibility(View.GONE);
-            voteButton2.setVisibility(View.VISIBLE);
-            Toast.makeText(this, "You have voted for this Candidate.", Toast.LENGTH_SHORT).show();
-        }
+        // Set the adapter on the RecyclerView
+        recyclerView.setAdapter(candidateAdapter);
     }
 }
+
 
