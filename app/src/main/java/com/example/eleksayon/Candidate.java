@@ -9,6 +9,7 @@ public class Candidate {
     private String position;
     private String platform;
     private String imagePath;
+    private int voteCount;
 
     public Candidate(int id, String firstName, String lastName, String yearLevel, String courseCandidate, String position, String platform, String imagePath) {
         this.id = id;
@@ -39,6 +40,12 @@ public class Candidate {
         return imagePath;
     }
     public int getId() {
-        return id; // Replace 'id' with the actual identifier field in your Candidate class
+        return id;
+    }
+    public int getVoteCount(){
+        return voteCount;
+    }
+    public void setVoteCount(int voteCount){
+        this.voteCount = voteCount;
     }
 }

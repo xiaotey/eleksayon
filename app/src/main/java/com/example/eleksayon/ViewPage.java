@@ -1,4 +1,5 @@
 package com.example.eleksayon;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,11 +17,12 @@ import java.util.List;
 public class ViewPage extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private CandidateAdapter candidateAdapter;
+    private ViewPageAdapter viewPageAdapter;
     private List<Candidate> candidateList;
     private DBHandler dbHandler;
 
     private Button voteButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,7 @@ public class ViewPage extends AppCompatActivity {
         dbHandler = new DBHandler(this);
 
         voteButton = findViewById(R.id.vote_button_1);
+
         // Initialize the RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -82,17 +86,25 @@ public class ViewPage extends AppCompatActivity {
         // Sort the candidateList based on the defined positionComparator
         Collections.sort(candidateList, positionComparator);
 
-        // Initialize the CandidateAdapter with the candidateList
-        candidateAdapter = new CandidateAdapter(this, candidateList);
+        // Initialize the ViewPageAdapter with the candidateList
+        viewPageAdapter = new ViewPageAdapter(candidateList);
 
         // Set the adapter on the RecyclerView
-        recyclerView.setAdapter(candidateAdapter);
-
+        recyclerView.setAdapter(viewPageAdapter);
     }
+
     public void onVoteButtonClicked(View view) {
         voteButton.setVisibility(View.GONE);
         Toast.makeText(this, "You have voted for this candidate.", Toast.LENGTH_SHORT).show();
+
+        int position = recyclerView.getChildAdapterPosition(view);
+        int candidateId = candidateList.get(position).getId();
+
+        // Retrieve the vote count for the candidate from the DBHandler
+        int voteCount = dbHandler.getVoteCount(candidateId);
+
+        // Update the vote count in the ViewPageAdapter
+        viewPageAdapter.updateVoteCount(position, voteCount);
     }
 }
-
 

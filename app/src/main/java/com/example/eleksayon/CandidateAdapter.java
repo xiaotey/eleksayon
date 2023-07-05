@@ -22,11 +22,13 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
     private List<Candidate> candidateList;
     private Context context;
     private List<String> votedPositions;
-    DBHandler dbHandler;
+    private DBHandler dbHandler;
+
     public CandidateAdapter(Context context, List<Candidate> candidateList) {
         this.context = context;
         this.candidateList = candidateList;
         this.votedPositions = new ArrayList<>();
+        this.dbHandler = new DBHandler(context);
     }
 
     @NonNull
@@ -42,29 +44,24 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
         holder.candidateName.setText(candidate.getFirstName() + " " + candidate.getLastName());
         holder.candidatePosition.setText(candidate.getPosition());
         holder.candidateDescription.setText(candidate.getDescription());
-
         // Load the candidate image from storage and set it to the ImageView
         Bitmap bitmap = BitmapFactory.decodeFile(candidate.getImagePath());
         holder.candidateImage.setImageBitmap(bitmap);
 
         // Check if the position is already voted, and disable the vote button
         if (votedPositions.contains(candidate.getPosition())) {
-            holder.voteButton.setEnabled(false);
+            Toast.makeText(context, "You have already voted for this position.", Toast.LENGTH_SHORT).show();
         } else {
-            holder.voteButton.setEnabled(true);
-            holder.voteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Handle the vote button click event
-                    // You can implement the voting logic here
+            // Update the votedPositions list to mark this position as voted
+            votedPositions.add(candidate.getPosition());
 
-                    // Update the votedPositions list
-                    votedPositions.add(candidate.getPosition());
-                    // Disable the vote button to prevent multiple votes for the same position
-                    holder.voteButton.setEnabled(false);
-                    dbHandler.incrementVoteCount(candidate.getId());
-                }
-            });
+            // Disable the vote button to prevent multiple votes for the same position
+            holder.voteButton.setEnabled(false);
+
+            // Increment the vote count in the database
+            dbHandler.incrementVoteCount(candidate.getId());
+
+            Toast.makeText(context, "Vote counted successfully.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -88,6 +85,5 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
             candidateDescription = itemView.findViewById(R.id.candidate_description_1);
             voteButton = itemView.findViewById(R.id.vote_button_1);
         }
-        }
     }
-
+}

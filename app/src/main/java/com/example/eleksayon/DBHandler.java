@@ -215,4 +215,20 @@ public class DBHandler extends SQLiteOpenHelper {
                 "WHERE id = " + candidateId);
         db.close();
     }
+    public int getVoteCount(int candidateId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COLUMN_VOTE_COUNT + " FROM " + TABLE_CANDIDATES + " WHERE " + COLUMN_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(candidateId)};
+        Cursor cursor = db.rawQuery(query, selectionArgs);
+
+        int voteCount = 0;
+        if (cursor.moveToFirst()) {
+            int voteCountIndex = cursor.getColumnIndex(COLUMN_VOTE_COUNT);
+            voteCount = cursor.getInt(voteCountIndex);
+        }
+
+        cursor.close();
+        db.close();
+        return voteCount;
+    }
 }
