@@ -13,7 +13,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginBottom="420dp"
         android:backgroundTint="#B80000"
-        android:onClick="onvoteButton1Clicked"
+        android:onClick="onvoteButtonClicked"
         android:text="Vote"
         android:textColor="#FFD700"
         app:cornerRadius="30dp"
