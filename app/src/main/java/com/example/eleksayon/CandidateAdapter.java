@@ -34,8 +34,7 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Candidate candidate = candidateList.get(position);
-        holder.candidateName.setText(candidate.getFirstName());
-        holder.candidateName.setText(candidate.getLastName());
+        holder.candidateName.setText(candidate.getFirstName() + " " + candidate.getLastName());
         holder.candidatePosition.setText(candidate.getPosition());
         holder.candidateDescription.setText(candidate.getDescription());
 
