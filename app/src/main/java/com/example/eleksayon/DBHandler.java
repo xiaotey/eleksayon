@@ -171,12 +171,16 @@ public class DBHandler extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                int id = cursor.getInt(cursor.getColumnIndex(KEY_ID));
-                String name = cursor.getString(cursor.getColumnIndex(KEY_NAME));
-                String position = cursor.getString(cursor.getColumnIndex(KEY_POSITION));
-                String description = cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION));
-                String imagePath = cursor.getString(cursor.getColumnIndex(KEY_IMAGE_PATH));
-                Candidate candidate = new Candidate(name, position, description, imagePath);
+                int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+                String firstName = cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME));
+                String lastName = cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME));
+                String yearLevel = cursor.getString(cursor.getColumnIndex(COLUMN_YEAR_LEVEL));
+                String courseCandidate = cursor.getString(cursor.getColumnIndex(COLUMN_COURSE_CANDIDATE));
+                String position = cursor.getString(cursor.getColumnIndex(COLUMN_POSITION));
+                String platform = cursor.getString(cursor.getColumnIndex(COLUMN_PLATFORM));
+                String imagePath = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE_PATH));
+
+                Candidate candidate = new Candidate(firstName, lastName, yearLevel, courseCandidate, position, platform, imagePath);
                 candidateList.add(candidate);
             } while (cursor.moveToNext());
         }
