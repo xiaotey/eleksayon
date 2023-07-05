@@ -55,7 +55,7 @@ public class student_dashboard extends AppCompatActivity {
         viewbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(student_dashboard.this, ViewPage.class);
+                Intent intent = new Intent(student_dashboard.this, StudentVoteActivity.class);
                 startActivity(intent);
             }
         });
