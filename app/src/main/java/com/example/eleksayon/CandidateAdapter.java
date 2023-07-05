@@ -21,7 +21,7 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
     private List<Candidate> candidateList;
     private Context context;
     private List<String> votedPositions;
-
+    DBHandler dbHandler;
     public CandidateAdapter(Context context, List<Candidate> candidateList) {
         this.context = context;
         this.candidateList = candidateList;
@@ -61,6 +61,7 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
                     votedPositions.add(candidate.getPosition());
                     // Disable the vote button to prevent multiple votes for the same position
                     holder.voteButton.setEnabled(false);
+                    dbHandler.incrementVoteCount(candidate.getId());
                 }
             });
         }
