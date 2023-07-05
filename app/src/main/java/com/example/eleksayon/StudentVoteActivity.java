@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -14,6 +15,7 @@ public class StudentVoteActivity extends AppCompatActivity {
     private Button voteButton2;
     private boolean isPressMeVisible = true;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +24,7 @@ public class StudentVoteActivity extends AppCompatActivity {
         voteButton1 = findViewById(R.id.vote_button_1);
         voteButton2 = findViewById(R.id.vote_button_2);
     }
+
 
     public void onvoteButton1Clicked(View view) {
         isPressMeVisible = false;
