@@ -45,7 +45,6 @@ public class AddCandidate extends AppCompatActivity implements AdapterView.OnIte
         List<String> positions = new ArrayList<>();
         positions.add("Governor");
         positions.add("Vice Governor");
-        positions.add("TadStraw Committee");
         positions.add("Food Committee");
         positions.add("Ethics & Grievances Committee");
         positions.add("Tabulations Committee");
