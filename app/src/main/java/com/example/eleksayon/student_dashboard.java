@@ -30,7 +30,6 @@ public class student_dashboard extends AppCompatActivity {
 
         button7 = findViewById(R.id.button7);
         sharedPreferences = getSharedPreferences("AdminDashboard", MODE_PRIVATE);
-
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
