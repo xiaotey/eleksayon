@@ -33,6 +33,8 @@
         <activity
             android:name=".LogInPage"
             android:exported="false" />
+        <activity android:name="com.example.eleksayon.ViewPage" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

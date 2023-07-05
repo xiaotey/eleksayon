@@ -21,6 +21,7 @@ public class AdminDashboard extends AppCompatActivity {
     ImageButton LogOutButtonBackground;
     ImageButton imageButton4;
     ImageButton calendarbutton;
+    ImageButton imageButton3;
 
 
     @Override
@@ -59,6 +60,14 @@ public class AdminDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setDate();
+            }
+        });
+        imageButton3 = findViewById(R.id.imageButton3);
+        imageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(AdminDashboard.this,ViewPage.class);
+                startActivity(intent);
             }
         });
     }

@@ -31,8 +31,6 @@ public class ViewPage extends AppCompatActivity {
         // Initialize the DBHandler
         dbHandler = new DBHandler(this);
 
-        voteButton = findViewById(R.id.vote_button_1);
-
         // Initialize the RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
