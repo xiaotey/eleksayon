@@ -49,10 +49,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/bottomredbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/topredbar"
-        app:layout_constraintVertical_bias="0.248"
+        app:layout_constraintVertical_bias="0.555"
         app:srcCompat="@drawable/studentvote_redbar" />
 
     <ImageView
@@ -125,20 +125,6 @@
         app:layout_constraintStart_toEndOf="@+id/imageView17"
         app:layout_constraintTop_toTopOf="@+id/imageView14"
         app:srcCompat="@drawable/gray_area" />
-
-    <Button
-        android:id="@+id/return_button"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/new_back_button"
-        android:foreground="@drawable/new_back_button"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="@+id/topredbar"
-        app:layout_constraintEnd_toEndOf="@+id/topredbar"
-        app:layout_constraintHorizontal_bias="0.038"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.500" />
 
     <TextView
         android:id="@+id/candidate_name_1"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentProfile">
+    tools:context=".ViewPage">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -29,20 +29,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/red_bars" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/new_back_button"
-        android:foreground="@drawable/new_back_button"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.500" />
 
     <ImageView
         android:id="@+id/imageView12"
