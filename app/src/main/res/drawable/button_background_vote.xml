@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/check_mark_background" android:state_pressed="true" />
+    <item android:drawable="@drawable/free_check_mark_icon_3279_thumb" android:state_pressed="true" />
     <item android:drawable="@android:color/transparent" />
 </selector>
