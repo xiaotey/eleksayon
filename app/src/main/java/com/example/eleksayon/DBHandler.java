@@ -35,6 +35,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String COLUMN_POSITION = "position";
     private static final String COLUMN_PLATFORM = "platform";
     private static final String COLUMN_IMAGE_PATH = "image_path";
+    private static final String COLUMN_VOTE_COUNT = "vote_count";
 
     private Context context;
 
@@ -47,8 +48,16 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createVotersTable = "CREATE TABLE " + TABLE_VOTERS + " (email TEXT PRIMARY KEY, password TEXT, id TEXT, course TEXT, has_voted INTEGER DEFAULT 0)";
         String createAdminUsersTable = "CREATE TABLE " + TABLE_ADMINS + " (email TEXT PRIMARY KEY, password TEXT, id TEXT, course TEXT)";
-        String createCandidatesTable = "CREATE TABLE " + TABLE_CANDIDATES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, year_level TEXT, course_candidate TEXT, image_path TEXT, first_name TEXT, position TEXT, platform TEXT, last_name TEXT)";
-
+        String createCandidatesTable = "CREATE TABLE " + TABLE_CANDIDATES +
+                " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "year_level TEXT, " +
+                "course_candidate TEXT, " +
+                "image_path TEXT, " +
+                "first_name TEXT, " +
+                "position TEXT, " +
+                "platform TEXT, " +
+                "last_name TEXT, " +
+                COLUMN_VOTE_COUNT + " INTEGER DEFAULT 0)";
         db.execSQL(createVotersTable);
         db.execSQL(createAdminUsersTable);
         db.execSQL(createCandidatesTable);
@@ -153,6 +162,7 @@ public class DBHandler extends SQLiteOpenHelper {
             contentValues.put(COLUMN_POSITION, position);
             contentValues.put(COLUMN_PLATFORM, platform);
             contentValues.put(COLUMN_IMAGE_PATH, imagePath);
+            contentValues.put(COLUMN_VOTE_COUNT, 0);
             long result = db.insert(TABLE_CANDIDATES, null, contentValues);
             return result != -1;
         } else {
@@ -197,5 +207,12 @@ public class DBHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return candidateList;
+    }
+    public void incrementVoteCount(int candidateId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE " + TABLE_CANDIDATES +
+                " SET " + COLUMN_VOTE_COUNT + " = " + COLUMN_VOTE_COUNT + " + 1 " +
+                "WHERE id = " + candidateId);
+        db.close();
     }
 }
