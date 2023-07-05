@@ -88,5 +88,6 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
             candidateDescription = itemView.findViewById(R.id.candidate_description_1);
             voteButton = itemView.findViewById(R.id.vote_button_1);
         }
+        }
     }
-}
+
