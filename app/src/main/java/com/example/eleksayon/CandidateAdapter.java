@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,6 +66,8 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
         TextView candidateDescription;
         Button voteButton;
 
+
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             candidateImage = itemView.findViewById(R.id.uploadedImage2);
@@ -73,4 +77,6 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
             voteButton = itemView.findViewById(R.id.vote_button_1);
         }
     }
+
+
 }

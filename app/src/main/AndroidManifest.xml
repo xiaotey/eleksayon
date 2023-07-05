@@ -13,9 +13,6 @@
         android:theme="@style/Theme.Eleksayon"
         tools:targetApi="31">
         <activity
-            android:name=".ViewPage"
-            android:exported="false" />
-        <activity
             android:name=".AdminLogInPage"
             android:exported="false" />
         <activity

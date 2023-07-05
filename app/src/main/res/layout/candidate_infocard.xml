@@ -15,18 +15,32 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <Button
+            android:id="@+id/vote_button_1"
+            android:layout_width="112dp"
+            android:layout_height="51dp"
+            android:backgroundTint="#B80000"
+            android:text="Vote"
+            android:onClick="onVoteButtonClicked"
+            android:textColor="#FFD700"
+            app:cornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/candidate_description_1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/uploadedImage2"
+            app:layout_constraintVertical_bias="0.621"
+            tools:ignore="MissingConstraints" />
+
         <ImageView
             android:id="@+id/uploadedImage2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginBottom="20dp"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/vote_button_1"
             app:layout_constraintEnd_toStartOf="@+id/candidate_position_1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.761" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/candidate_name_1"
@@ -53,7 +67,7 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.397"
+            app:layout_constraintHorizontal_bias="0.469"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.153" />
@@ -74,19 +88,6 @@
             app:layout_constraintStart_toEndOf="@+id/uploadedImage2"
             app:layout_constraintTop_toBottomOf="@+id/candidate_position_1"
             app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/vote_button_1"
-            android:layout_width="84dp"
-            android:layout_height="36dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/bg_infocard"
-            android:backgroundTint="@color/maroon"
-            android:text="Vote"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

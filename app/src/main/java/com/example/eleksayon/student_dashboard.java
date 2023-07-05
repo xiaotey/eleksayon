@@ -43,6 +43,7 @@ public class student_dashboard extends AppCompatActivity {
             }
         });
 
+
         vbutton = findViewById(R.id.buttonvote);
         viewbutton = findViewById(R.id.button3);
         vbutton.setOnClickListener(new View.OnClickListener() {
