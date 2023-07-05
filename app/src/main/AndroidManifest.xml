@@ -20,10 +20,10 @@
             android:exported="false" />
         <activity
             android:name=".StudentVoteActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".student_dashboard"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".AddCandidate"
             android:exported="true" />
