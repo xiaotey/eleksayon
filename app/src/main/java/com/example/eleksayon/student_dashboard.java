@@ -42,6 +42,7 @@ public class student_dashboard extends AppCompatActivity {
             }
         });
 
+
         vbutton = findViewById(R.id.buttonvote);
         viewbutton = findViewById(R.id.button3);
         vbutton.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +55,7 @@ public class student_dashboard extends AppCompatActivity {
         viewbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(student_dashboard.this, ViewPage.class);
+                Intent intent = new Intent(student_dashboard.this, StudentVoteActivity.class);
                 startActivity(intent);
             }
         });
