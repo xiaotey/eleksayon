@@ -11,10 +11,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import com.example.eleksayon.databinding.ActivityStudentVoteBinding;
 
 import java.util.Calendar;
@@ -26,15 +22,12 @@ public class student_dashboard extends AppCompatActivity {
     Button button5;
     public Button vbutton;
     public Button viewbutton;
-    private static final String DISABLE_DATE = "2023-07-31"; // Replace with your desired date
-    private Button accessButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
         button5 = findViewById(R.id.button5);
-        accessButton = findViewById(R.id.buttonvote);
-        checkAccessAndDisableButton();
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,26 +81,8 @@ public class student_dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
+}
 
-    private void checkAccessAndDisableButton() {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date disableDate;
-        try {
-            disableDate = sdf.parse(DISABLE_DATE);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            disableDate = null;
-        }
 
-        Date currentDate = new Date();
-        if (disableDate != null && currentDate.after(disableDate)) {
-
-            accessButton.setEnabled(false);
-            Toast.makeText(this, "Voting dates are closed.", Toast.LENGTH_SHORT).show();
-        }
-
-        }
-    }
