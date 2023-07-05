@@ -42,15 +42,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/BackStyle"
+        android:layout_width="415dp"
+        android:layout_height="123dp"
+        android:layout_marginBottom="532dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/button_background"
+        app:tint="@color/maroon" />
+
+    <ImageView
         android:id="@+id/CalendarButtonBackground"
         android:layout_width="167dp"
         android:layout_height="246dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="124dp"
-        android:layout_marginEnd="220dp"
-        android:layout_marginBottom="361dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/button_background"
@@ -60,13 +68,9 @@
         android:id="@+id/ViewButtonBackground"
         android:layout_width="167dp"
         android:layout_height="246dp"
-        android:layout_marginStart="221dp"
         android:layout_marginTop="126dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="359dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/button_background"
         app:tint="#FFFFFF" />
@@ -76,14 +80,9 @@
         android:layout_width="167dp"
         android:layout_height="246dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="419dp"
-        android:layout_marginEnd="220dp"
         android:layout_marginBottom="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529"
         app:srcCompat="@drawable/button_background"
         app:tint="#FFFFFF" />
 
@@ -91,14 +90,10 @@
         android:id="@+id/imageView7"
         android:layout_width="167dp"
         android:layout_height="246dp"
-        android:layout_marginStart="224dp"
-        android:layout_marginTop="419dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/button_background"
         app:tint="#FFFFFF" />
 
@@ -192,6 +187,7 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="CALENDAR"
         android:textColor="@color/gold"
         android:textStyle="bold"

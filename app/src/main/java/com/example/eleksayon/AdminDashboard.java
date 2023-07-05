@@ -5,63 +5,76 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 
 public class AdminDashboard extends AppCompatActivity {
-
-    private ImageButton addButton;
-    private ImageButton calendarButton;
-    private ImageButton logoutButton;
+    SharedPreferences sharedPreferences;
+    Intent intent;
+    ImageButton LogOutButtonBackground;
+    ImageButton imageButton4;
+    ImageButton calendarbutton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
-        addButton = findViewById(R.id.imageButton4);
-       addButton.setOnClickListener(new View.OnClickListener() {
+        imageButton4 = findViewById(R.id.imageButton4);
+
+        imageButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminDashboard.this, AddCandidate.class);
-                startActivity(intent);
-            }
-        });
-        logoutButton = findViewById(R.id.LogOutButtonBackground);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(AdminDashboard.this, "Logout Successful", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AdminDashboard.this, MainActivity.class);
+                Intent intent= new Intent(AdminDashboard.this,AddCandidate.class);
                 startActivity(intent);
             }
         });
 
-        calendarButton = findViewById(R.id.calendarbutton);
-        calendarButton.setOnClickListener(new View.OnClickListener() {
+        LogOutButtonBackground = findViewById(R.id.LogOutButtonBackground);
+        sharedPreferences=getSharedPreferences("AdminDashboard", MODE_PRIVATE);
+
+        LogOutButtonBackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                openDialog();
-
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                intent = new Intent(AdminDashboard.this,LogInPage.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
-        }
-        private void openDialog(){
 
-            DatePickerDialog dialog = new DatePickerDialog(this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        calendarbutton = findViewById(R.id.calendarbutton);
 
-
-                }
-            }, 2023, 0, 15);
-            dialog.show();
-        }
-
+        calendarbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDate();
+            }
+        });
     }
+
+    private void setDate() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int date = calendar.get(Calendar.DATE);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+            }
+        }, year, month, date);
+        datePickerDialog.show();
+    }
+}
 
