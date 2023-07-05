@@ -18,8 +18,8 @@ import java.util.Calendar;
 public class student_dashboard extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Intent intent;
-    Button button7;
-    Button button5;
+    private Button button7;
+    private Button button5;
     public Button vbutton;
     public Button viewbutton;
 
@@ -27,28 +27,6 @@ public class student_dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
-        button5 = findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setDate();
-            }
-        });
-    }
-
-    private void setDate() {
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int date = calendar.get(Calendar.DATE);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-
-            }
-        }, year, month, date);
-        datePickerDialog.show();
 
         button7 = findViewById(R.id.button7);
         sharedPreferences = getSharedPreferences("AdminDashboard", MODE_PRIVATE);
@@ -81,8 +59,31 @@ public class student_dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button5 = findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDate();
+            }
+        });
+    }
+
+    private void setDate() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int date = calendar.get(Calendar.DATE);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+            }
+        }, year, month, date);
+        datePickerDialog.show();
     }
 }
+
 
 
 
