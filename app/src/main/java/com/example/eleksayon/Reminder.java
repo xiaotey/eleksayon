@@ -49,8 +49,8 @@ public class Reminder extends AppCompatActivity {
                 int month = datePicker.getMonth();
                 int year = datePicker.getYear();
 
-                int hour = timePicker.getCurrentHour();
-                int minute = timePicker.getCurrentMinute();
+                int hour = timePicker.getHour();
+                int minute = timePicker.getMinute();
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, day, hour, minute, 0);
