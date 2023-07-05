@@ -6,22 +6,26 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.ViewHolder> {
 
     private List<Candidate> candidateList;
     private Context context;
+    private List<String> votedPositions;
 
     public CandidateAdapter(Context context, List<Candidate> candidateList) {
         this.context = context;
         this.candidateList = candidateList;
+        this.votedPositions = new ArrayList<>();
     }
 
     @NonNull
@@ -42,14 +46,24 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
         Bitmap bitmap = BitmapFactory.decodeFile(candidate.getImagePath());
         holder.candidateImage.setImageBitmap(bitmap);
 
-        // Set a click listener on the vote button
-        holder.voteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle the vote button click event
-                // You can implement the voting logic here
-            }
-        });
+        // Check if the position is already voted, and disable the vote button
+        if (votedPositions.contains(candidate.getPosition())) {
+            holder.voteButton.setEnabled(false);
+        } else {
+            holder.voteButton.setEnabled(true);
+            holder.voteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Handle the vote button click event
+                    // You can implement the voting logic here
+
+                    // Update the votedPositions list
+                    votedPositions.add(candidate.getPosition());
+                    // Disable the vote button to prevent multiple votes for the same position
+                    holder.voteButton.setEnabled(false);
+                }
+            });
+        }
     }
 
     @Override
