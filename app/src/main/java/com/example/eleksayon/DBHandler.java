@@ -174,10 +174,10 @@ public class DBHandler extends SQLiteOpenHelper {
             int firstNameIndex = cursor.getColumnIndex(COLUMN_FIRST_NAME);
             int lastNameIndex = cursor.getColumnIndex(COLUMN_LAST_NAME);
             int yearLevelIndex = cursor.getColumnIndex(COLUMN_YEAR_LEVEL);
-            int courseCandidateIndex = cursor.getColumnIndex(COLUMN_COURSE_CANDIDATE);
+            int courseCandidateIndex = cursor.getColumnIndex(COLUMN_COURSE);
             int positionIndex = cursor.getColumnIndex(COLUMN_POSITION);
-            int platformIndex = cursor.getColumnIndex(COLUMN_PLATFORM);
             int imagePathIndex = cursor.getColumnIndex(COLUMN_IMAGE_PATH);
+            int platformIndex = cursor.getColumnIndex(COLUMN_PLATFORM);
 
             do {
                 int id = cursor.getInt(idIndex);
