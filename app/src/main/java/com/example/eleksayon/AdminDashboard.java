@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import com.example.eleksayon.Reminder;
 
 import java.util.Calendar;
 
@@ -54,28 +55,13 @@ public class AdminDashboard extends AppCompatActivity {
         });
 
         calendarbutton = findViewById(R.id.calendarbutton);
-
         calendarbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setDate();
+                Intent intent = new Intent(AdminDashboard.this, Reminder.class);
+                startActivity(intent);
             }
         });
-    }
-
-    private void setDate() {
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int date = calendar.get(Calendar.DATE);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-
-            }
-        }, year, month, date);
-        datePickerDialog.show();
     }
 }
 
