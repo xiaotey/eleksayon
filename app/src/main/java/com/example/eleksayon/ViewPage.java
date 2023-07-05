@@ -23,7 +23,7 @@ public class ViewPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_vote);
+        setContentView(R.layout.activity_view_page);
 
         // Initialize the DBHandler
         dbHandler = new DBHandler(this);
