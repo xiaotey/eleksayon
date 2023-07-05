@@ -170,15 +170,24 @@ public class DBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CANDIDATES, null);
 
         if (cursor.moveToFirst()) {
+            int idIndex = cursor.getColumnIndex(COLUMN_ID);
+            int firstNameIndex = cursor.getColumnIndex(COLUMN_FIRST_NAME);
+            int lastNameIndex = cursor.getColumnIndex(COLUMN_LAST_NAME);
+            int yearLevelIndex = cursor.getColumnIndex(COLUMN_YEAR_LEVEL);
+            int courseCandidateIndex = cursor.getColumnIndex(COLUMN_COURSE_CANDIDATE);
+            int positionIndex = cursor.getColumnIndex(COLUMN_POSITION);
+            int platformIndex = cursor.getColumnIndex(COLUMN_PLATFORM);
+            int imagePathIndex = cursor.getColumnIndex(COLUMN_IMAGE_PATH);
+
             do {
-                int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
-                String firstName = cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME));
-                String lastName = cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME));
-                String yearLevel = cursor.getString(cursor.getColumnIndex(COLUMN_YEAR_LEVEL));
-                String courseCandidate = cursor.getString(cursor.getColumnIndex(COLUMN_COURSE_CANDIDATE));
-                String position = cursor.getString(cursor.getColumnIndex(COLUMN_POSITION));
-                String platform = cursor.getString(cursor.getColumnIndex(COLUMN_PLATFORM));
-                String imagePath = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE_PATH));
+                int id = cursor.getInt(idIndex);
+                String firstName = cursor.getString(firstNameIndex);
+                String lastName = cursor.getString(lastNameIndex);
+                String yearLevel = cursor.getString(yearLevelIndex);
+                String courseCandidate = courseCandidateIndex != -1 ? cursor.getString(courseCandidateIndex) : "";
+                String position = positionIndex != -1 ? cursor.getString(positionIndex) : "";
+                String platform = platformIndex != -1 ? cursor.getString(platformIndex) : "";
+                String imagePath = imagePathIndex != -1 ? cursor.getString(imagePathIndex) : "";
 
                 Candidate candidate = new Candidate(firstName, lastName, yearLevel, courseCandidate, position, platform, imagePath);
                 candidateList.add(candidate);
