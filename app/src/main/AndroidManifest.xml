@@ -42,6 +42,11 @@
             android:name=".Reminder"
             android:label="Reminder Activity">
         </activity>
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true">
+        </receiver>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

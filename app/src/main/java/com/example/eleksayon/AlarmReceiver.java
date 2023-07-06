@@ -22,7 +22,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     private void showNotification(Context context) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_alarm)
-                .setContentTitle("We are election")
+                .setContentTitle("Eleksayon")
                 .setContentText("Voting will start soon")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true);
