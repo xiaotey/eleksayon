@@ -23,7 +23,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_ADMINS = "admins";
     private static final String TABLE_CANDIDATES = "candidates";
 
-    private static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_COURSE = "course";
@@ -235,5 +235,45 @@ public class DBHandler extends SQLiteOpenHelper {
 
         return voteCount;
     }
+    public boolean checkHasVoted(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_VOTERS, new String[]{COLUMN_HAS_VOTED}, COLUMN_EMAIL + " = ?", new String[]{email}, null, null, null);
 
+        boolean hasVoted = false;
+        if (cursor.moveToFirst()) {
+            int hasVotedIndex = cursor.getColumnIndex(COLUMN_HAS_VOTED);
+            int hasVotedValue = cursor.getInt(hasVotedIndex);
+
+            if (hasVotedValue == 1) {
+                hasVoted = true;
+            } else {
+                // Check if the user has voted for all possible positions
+                Cursor candidateCursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_CANDIDATES, null);
+                if (candidateCursor.moveToFirst()) {
+                    int candidateCount = candidateCursor.getInt(0);
+                    Cursor votedPositionsCursor = db.rawQuery("SELECT COUNT(DISTINCT " + COLUMN_POSITION + ") FROM " + TABLE_VOTERS + " WHERE " + COLUMN_EMAIL + " = ?", new String[]{email});
+                    if (votedPositionsCursor.moveToFirst()) {
+                        int votedPositionsCount = votedPositionsCursor.getInt(0);
+                        hasVoted = (votedPositionsCount == candidateCount);
+                    }
+                    votedPositionsCursor.close();
+                }
+                candidateCursor.close();
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return hasVoted;
+    }
+    public static String getColumnEmail() {
+        return COLUMN_EMAIL;
+    }
+    public void updateHasVoted(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_HAS_VOTED, 1);
+        db.update(TABLE_VOTERS, values, COLUMN_EMAIL + " = ?", new String[]{email});
+        db.close();
+    }
 }

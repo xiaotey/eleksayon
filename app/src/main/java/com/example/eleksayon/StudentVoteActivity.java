@@ -3,7 +3,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
+import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,13 +20,16 @@ public class StudentVoteActivity extends AppCompatActivity {
     private DBHandler dbHandler;
 
     private Button voteButton;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_vote);
+        sharedPreferences = getSharedPreferences("AdminDashboard", MODE_PRIVATE);
 
         // Initialize the DBHandler
         dbHandler = new DBHandler(this);
+        String voterEmail = sharedPreferences.getString(DBHandler.getColumnEmail(), "");
         // Initialize the RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -85,8 +88,6 @@ public class StudentVoteActivity extends AppCompatActivity {
 
         // Set the adapter on the RecyclerView
         recyclerView.setAdapter(candidateAdapter);
-
+        dbHandler.updateHasVoted(voterEmail);
     }
 }
-
-

@@ -13,23 +13,27 @@ import android.widget.Toast;
 
 import com.example.eleksayon.databinding.ActivityStudentVoteBinding;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class student_dashboard extends AppCompatActivity {
-    SharedPreferences sharedPreferences;
-    Intent intent;
+    private SharedPreferences sharedPreferences;
+    private Intent intent;
     private Button button7;
     private Button button5;
     public Button vbutton;
     public Button viewbutton;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
-
+        dbHandler = new DBHandler(this);
         button7 = findViewById(R.id.button7);
-        sharedPreferences = getSharedPreferences("AdminDashboard", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("StudentDashboard", MODE_PRIVATE);
+
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,16 +47,32 @@ public class student_dashboard extends AppCompatActivity {
             }
         });
 
-
         vbutton = findViewById(R.id.buttonvote);
         viewbutton = findViewById(R.id.button3);
+
         vbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(student_dashboard.this, StudentVoteActivity.class);
-                startActivity(intent);
+                // Check if the user has already accessed the voting page
+                boolean hasAccessedVotingPage = sharedPreferences.getBoolean("has_accessed_voting_page", false);
+
+                if (hasAccessedVotingPage) {
+                    // User has already accessed the voting page
+                    Toast.makeText(student_dashboard.this, "You have already voted", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Update the flag to indicate that the user has accessed the voting page
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("has_accessed_voting_page", true);
+                    editor.apply();
+
+                    // Proceed to vote
+                    Intent intent = new Intent(student_dashboard.this, StudentVoteActivity.class);
+                    startActivity(intent);
+                }
             }
         });
+
+
         viewbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,8 +103,33 @@ public class student_dashboard extends AppCompatActivity {
         }, year, month, date);
         datePickerDialog.show();
     }
+
+    private boolean checkAllPositionsVoted() {
+        List<Candidate> candidateList = dbHandler.getAllCandidates();
+
+        // Get the list of positions with candidates
+        List<String> positionsWithCandidates = new ArrayList<>();
+        for (Candidate candidate : candidateList) {
+            String position = candidate.getPosition();
+            if (!positionsWithCandidates.contains(position)) {
+                positionsWithCandidates.add(position);
+            }
+        }
+
+        // Iterate through the positions with candidates and check if all have been voted for
+        for (String position : positionsWithCandidates) {
+            boolean positionVoted = false;
+            for (Candidate candidate : candidateList) {
+                if (candidate.getPosition().equals(position) && candidate.getVoteCount() > 0) {
+                    positionVoted = true;
+                    break;
+                }
+            }
+            if (!positionVoted) {
+                return false; // Not all positions with candidates have been voted for
+            }
+        }
+
+        return true; // All positions with candidates have been voted for
+    }
 }
-
-
-
-

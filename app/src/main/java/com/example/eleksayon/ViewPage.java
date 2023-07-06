@@ -17,7 +17,7 @@ import java.util.List;
 public class ViewPage extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ViewPageAdapter viewPageAdapter;
+    private ViewPageAdapter ViewPageAdapter;
     private List<Candidate> candidateList;
     private DBHandler dbHandler;
 
@@ -85,10 +85,10 @@ public class ViewPage extends AppCompatActivity {
         Collections.sort(candidateList, positionComparator);
 
         // Initialize the ViewPageAdapter with the candidateList
-        viewPageAdapter = new ViewPageAdapter(candidateList);
+        ViewPageAdapter = new ViewPageAdapter(candidateList);
 
         // Set the adapter on the RecyclerView
-        recyclerView.setAdapter(viewPageAdapter);
+        recyclerView.setAdapter(ViewPageAdapter);
     }
 
     public void onVoteButtonClicked(View view) {
@@ -102,7 +102,7 @@ public class ViewPage extends AppCompatActivity {
         int voteCount = dbHandler.getVoteCount(candidateId);
 
         // Update the vote count in the ViewPageAdapter
-        viewPageAdapter.updateVoteCount(position, voteCount);
+        ViewPageAdapter.updateVoteCount(position, voteCount);
     }
 }
 
