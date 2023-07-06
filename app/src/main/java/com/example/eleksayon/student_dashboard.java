@@ -37,7 +37,7 @@ public class student_dashboard extends AppCompatActivity {
                 editor.clear();
                 editor.commit();
                 Toast.makeText(student_dashboard.this, "Logged Out", Toast.LENGTH_SHORT).show();
-                intent = new Intent(student_dashboard.this, LogInPage.class);
+                intent = new Intent(student_dashboard.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }

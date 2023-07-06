@@ -49,7 +49,7 @@ public class AdminDashboard extends AppCompatActivity {
                 editor.clear();
                 editor.commit();
                 Toast.makeText(AdminDashboard.this, "Logged Out", Toast.LENGTH_SHORT).show();
-                intent = new Intent(AdminDashboard.this,LogInPage.class);
+                intent = new Intent(AdminDashboard.this,MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
