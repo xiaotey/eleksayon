@@ -32,7 +32,7 @@ public class AdminLogInPage extends AppCompatActivity {
 
                     if (checkCredentials) {
                         Toast.makeText(AdminLogInPage.this, "Account has no admin rights, login as user instead", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), student_dashboard.class);
+                        Intent intent = new Intent(getApplicationContext(), LogInPage.class);
                         startActivity(intent);
                     } else if (checkAdminRights) {
                         Toast.makeText(AdminLogInPage.this, "Admin account logged in", Toast.LENGTH_SHORT).show();
