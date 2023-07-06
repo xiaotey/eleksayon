@@ -184,10 +184,11 @@ public class DBHandler extends SQLiteOpenHelper {
             int firstNameIndex = cursor.getColumnIndex(COLUMN_FIRST_NAME);
             int lastNameIndex = cursor.getColumnIndex(COLUMN_LAST_NAME);
             int yearLevelIndex = cursor.getColumnIndex(COLUMN_YEAR_LEVEL);
-            int courseCandidateIndex = cursor.getColumnIndex(COLUMN_COURSE);
+            int courseCandidateIndex = cursor.getColumnIndex(COLUMN_COURSE_CANDIDATE);
             int positionIndex = cursor.getColumnIndex(COLUMN_POSITION);
             int imagePathIndex = cursor.getColumnIndex(COLUMN_IMAGE_PATH);
             int platformIndex = cursor.getColumnIndex(COLUMN_PLATFORM);
+            int voteCountIndex = cursor.getColumnIndex(COLUMN_VOTE_COUNT);
 
             do {
                 int id = cursor.getInt(idIndex);
@@ -198,8 +199,10 @@ public class DBHandler extends SQLiteOpenHelper {
                 String position = positionIndex != -1 ? cursor.getString(positionIndex) : "";
                 String platform = platformIndex != -1 ? cursor.getString(platformIndex) : "";
                 String imagePath = imagePathIndex != -1 ? cursor.getString(imagePathIndex) : "";
+                int voteCount = cursor.getInt(voteCountIndex);
 
                 Candidate candidate = new Candidate(id, firstName, lastName, yearLevel, courseCandidate, position, platform, imagePath);
+                candidate.setVoteCount(voteCount);
                 candidateList.add(candidate);
             } while (cursor.moveToNext());
         }
@@ -229,6 +232,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
         cursor.close();
         db.close();
+
         return voteCount;
     }
+
 }

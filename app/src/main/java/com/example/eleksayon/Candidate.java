@@ -20,6 +20,7 @@ public class Candidate {
         this.position = position;
         this.platform = platform;
         this.imagePath = imagePath;
+        this.voteCount = 0;
     }
 
     public String getLastName() {
