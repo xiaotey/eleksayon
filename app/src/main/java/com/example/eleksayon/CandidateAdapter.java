@@ -50,20 +50,40 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
 
         // Check if the position is already voted, and disable the vote button
         if (votedPositions.contains(candidate.getPosition())) {
+            holder.voteButton.setEnabled(false);
             Toast.makeText(context, "You have already voted for this position.", Toast.LENGTH_SHORT).show();
         } else {
-            // Update the votedPositions list to mark this position as voted
-            votedPositions.add(candidate.getPosition());
+            // Enable the vote button
+            holder.voteButton.setEnabled(true);
 
-            // Disable the vote button to prevent multiple votes for the same position
-            holder.voteButton.setEnabled(false);
+            // Set a click listener for the vote button
+            holder.voteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Check if the user has already voted for a candidate in the same position
+                    for (Candidate votedCandidate : candidateList) {
+                        if (votedCandidate.getPosition().equals(candidate.getPosition()) && votedPositions.contains(votedCandidate.getPosition())) {
+                            Toast.makeText(context, "You can only vote for one candidate per position.", Toast.LENGTH_SHORT).show();
+                            return; // Exit the onClick method without registering the vote
+                        }
+                    }
 
-            // Increment the vote count in the database
-            dbHandler.incrementVoteCount(candidate.getId());
+                    // Update the votedPositions list to mark this position as voted
+                    votedPositions.add(candidate.getPosition());
 
-            Toast.makeText(context, "Vote counted successfully.", Toast.LENGTH_SHORT).show();
+                    // Disable the vote button to prevent multiple votes for the same position
+                    holder.voteButton.setEnabled(false);
+
+                    // Increment the vote count in the database
+                    dbHandler.incrementVoteCount(candidate.getId());
+
+                    Toast.makeText(context, "Vote counted successfully.", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
+
+
 
     @Override
     public int getItemCount() {

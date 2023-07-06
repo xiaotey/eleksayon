@@ -87,10 +87,6 @@ public class StudentVoteActivity extends AppCompatActivity {
         recyclerView.setAdapter(candidateAdapter);
 
     }
-    public void onVoteButtonClicked(View view) {
-        voteButton.setVisibility(View.GONE);
-        Toast.makeText(this, "You have voted for this candidate.", Toast.LENGTH_SHORT).show();
-    }
 }
 
 
