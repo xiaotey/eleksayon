@@ -1,8 +1,7 @@
 package com.example.eleksayon;
+
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,15 +25,10 @@ public class StudentVoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_vote);
         sharedPreferences = getSharedPreferences("AdminDashboard", MODE_PRIVATE);
-
-        // Initialize the DBHandler
         dbHandler = new DBHandler(this);
         String voterEmail = sharedPreferences.getString(DBHandler.getColumnEmail(), "");
-        // Initialize the RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        // Retrieve candidate data from the database
         candidateList = dbHandler.getAllCandidates();
 
         Comparator<Candidate> positionComparator = new Comparator<Candidate>() {
@@ -63,30 +57,23 @@ public class StudentVoteActivity extends AppCompatActivity {
                 String position1 = candidate1.getPosition();
                 String position2 = candidate2.getPosition();
 
-                // Get the indices of the positions in the defined order
                 int index1 = positionOrder.indexOf(position1);
                 int index2 = positionOrder.indexOf(position2);
 
-                // Compare the indices to determine the sorting order
                 if (index1 == index2) {
                     return 0;
                 } else if (index1 == -1) {
-                    return 1; // candidate1 is a committee (not in the predefined order), move it down
+                    return 1;
                 } else if (index2 == -1) {
-                    return -1; // candidate2 is a committee (not in the predefined order), move it down
+                    return -1;
                 } else {
                     return Integer.compare(index1, index2);
                 }
             }
         };
 
-        // Sort the candidateList based on the defined positionComparator
         Collections.sort(candidateList, positionComparator);
-
-        // Initialize the CandidateAdapter with the candidateList
         candidateAdapter = new CandidateAdapter(this, candidateList);
-
-        // Set the adapter on the RecyclerView
         recyclerView.setAdapter(candidateAdapter);
         dbHandler.updateHasVoted(voterEmail);
     }

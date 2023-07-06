@@ -15,10 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,7 @@ public class AddCandidate extends AppCompatActivity implements AdapterView.OnIte
     private Button btnUpload;
     private ImageView imagePreview;
 
-    private DBHandler dbHandler; // Assuming you have an instance of DBHandler
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,12 +103,10 @@ public class AddCandidate extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        // Find the "Create Candidate" button and set an onClickListener
         Button btnCreateCandidate = findViewById(R.id.button6);
         btnCreateCandidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the candidate details from the form
                 EditText etFirstName = findViewById(R.id.editTextTextPersonName3);
                 EditText etLastName = findViewById(R.id.editTextTextPersonName);
                 Spinner spinnerYear = findViewById(R.id.spinner4);
@@ -119,17 +115,14 @@ public class AddCandidate extends AppCompatActivity implements AdapterView.OnIte
                 EditText etPlatform = findViewById(R.id.editTextTextPersonName8);
                 Bitmap imageBitmap = ((BitmapDrawable) uploadedImage.getDrawable()).getBitmap();
 
-                // Extract the selected values from spinners
                 String yearLevel = spinnerYear.getSelectedItem().toString();
                 String course = spinnerCourse.getSelectedItem().toString();
                 String position = spinnerPosition.getSelectedItem().toString();
 
-                // Get the first name, last name, and platform from the EditText fields
                 String firstName = etFirstName.getText().toString().trim();
                 String lastName = etLastName.getText().toString().trim();
                 String platform = etPlatform.getText().toString().trim();
 
-                // Insert the candidate into the database
                 insertCandidate(firstName, lastName, yearLevel, course, position, platform, imageBitmap);
             }
         });
@@ -161,16 +154,13 @@ public class AddCandidate extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // Get the selected item from the spinner
         String selectedItem = parent.getItemAtPosition(position).toString();
 
-        // Display a toast message with the selected item
         Toast.makeText(this, "Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        // Do nothing
     }
 
     private void insertCandidate(String firstName, String lastName, String yearLevel, String course, String position, String platform, Bitmap imageBitmap) {

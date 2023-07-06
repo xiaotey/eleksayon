@@ -1,15 +1,11 @@
 package com.example.eleksayon;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
-
 import com.example.eleksayon.databinding.ActivityLogInPageAdminBinding;
-import com.example.eleksayon.databinding.ActivityLogInPageBinding;
 
 public class AdminLogInPage extends AppCompatActivity {
     DBHandler databaseHelper;
@@ -31,18 +27,18 @@ public class AdminLogInPage extends AppCompatActivity {
                 if (email.equals("")|| password.equals(""))
                     Toast.makeText(AdminLogInPage.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 else{
-                    Boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
-                    Boolean checkAdminRights = databaseHelper.checkEmailPasswordAdmin(email, password);
+                    boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
+                    boolean checkAdminRights = databaseHelper.checkEmailPasswordAdmin(email, password);
 
-                    if (checkCredentials == true) {
+                    if (checkCredentials) {
                         Toast.makeText(AdminLogInPage.this, "Account has no admin rights, login as user instead", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), student_dashboard.class);
                         startActivity(intent);
-                    } else if (checkAdminRights == true) {
+                    } else if (checkAdminRights) {
                         Toast.makeText(AdminLogInPage.this, "Admin account logged in", Toast.LENGTH_SHORT).show();
                         Intent intent1 = new Intent(getApplicationContext(), AdminDashboard.class);
                         startActivity(intent1);
-                    } else if (checkCredentials == false || checkAdminRights == false){
+                    } else if (!checkCredentials || checkAdminRights == false){
                         Toast.makeText(AdminLogInPage.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
                 }

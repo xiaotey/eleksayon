@@ -1,20 +1,12 @@
 package com.example.eleksayon;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import com.example.eleksayon.Reminder;
-
-import java.util.Calendar;
-
 
 public class AdminDashboard extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -47,7 +39,7 @@ public class AdminDashboard extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences.Editor editor=sharedPreferences.edit();
                 editor.clear();
-                editor.commit();
+                editor.apply();
                 Toast.makeText(AdminDashboard.this, "Logged Out", Toast.LENGTH_SHORT).show();
                 intent = new Intent(AdminDashboard.this,MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -1,7 +1,6 @@
 package com.example.eleksayon;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,12 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
-
-import com.example.eleksayon.databinding.ActivityStudentVoteBinding;
-
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class student_dashboard extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
@@ -53,19 +47,14 @@ public class student_dashboard extends AppCompatActivity {
         vbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Check if the user has already accessed the voting page
                 boolean hasAccessedVotingPage = sharedPreferences.getBoolean("has_accessed_voting_page", false);
 
                 if (hasAccessedVotingPage) {
-                    // User has already accessed the voting page
                     Toast.makeText(student_dashboard.this, "You have already voted", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Update the flag to indicate that the user has accessed the voting page
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("has_accessed_voting_page", true);
                     editor.apply();
-
-                    // Proceed to vote
                     Intent intent = new Intent(student_dashboard.this, StudentVoteActivity.class);
                     startActivity(intent);
                 }
@@ -102,34 +91,5 @@ public class student_dashboard extends AppCompatActivity {
             }
         }, year, month, date);
         datePickerDialog.show();
-    }
-
-    private boolean checkAllPositionsVoted() {
-        List<Candidate> candidateList = dbHandler.getAllCandidates();
-
-        // Get the list of positions with candidates
-        List<String> positionsWithCandidates = new ArrayList<>();
-        for (Candidate candidate : candidateList) {
-            String position = candidate.getPosition();
-            if (!positionsWithCandidates.contains(position)) {
-                positionsWithCandidates.add(position);
-            }
-        }
-
-        // Iterate through the positions with candidates and check if all have been voted for
-        for (String position : positionsWithCandidates) {
-            boolean positionVoted = false;
-            for (Candidate candidate : candidateList) {
-                if (candidate.getPosition().equals(position) && candidate.getVoteCount() > 0) {
-                    positionVoted = true;
-                    break;
-                }
-            }
-            if (!positionVoted) {
-                return false; // Not all positions with candidates have been voted for
-            }
-        }
-
-        return true; // All positions with candidates have been voted for
     }
 }

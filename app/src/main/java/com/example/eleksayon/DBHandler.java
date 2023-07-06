@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
-import android.os.Environment;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
@@ -22,7 +21,6 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_VOTERS = "voters";
     private static final String TABLE_ADMINS = "admins";
     private static final String TABLE_CANDIDATES = "candidates";
-
     public static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_ID = "id";
@@ -72,7 +70,6 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 2) {
-            // Add the new column
             String alterTableQuery = "ALTER TABLE " + TABLE_CANDIDATES + " ADD COLUMN " + COLUMN_COURSE_CANDIDATE + " TEXT";
             db.execSQL(alterTableQuery);
         }
@@ -104,14 +101,6 @@ public class DBHandler extends SQLiteOpenHelper {
     public boolean checkEmailPassword(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_VOTERS, new String[]{COLUMN_EMAIL}, COLUMN_EMAIL + " = ? AND " + COLUMN_PASSWORD + " = ?", new String[]{email, password}, null, null, null);
-        boolean exists = cursor.getCount() > 0;
-        cursor.close();
-        return exists;
-    }
-
-    public boolean checkEmailAdmin(String email) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_ADMINS, new String[]{COLUMN_EMAIL}, COLUMN_EMAIL + " = ?", new String[]{email}, null, null, null);
         boolean exists = cursor.getCount() > 0;
         cursor.close();
         return exists;
@@ -234,37 +223,6 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
 
         return voteCount;
-    }
-    public boolean checkHasVoted(String email) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_VOTERS, new String[]{COLUMN_HAS_VOTED}, COLUMN_EMAIL + " = ?", new String[]{email}, null, null, null);
-
-        boolean hasVoted = false;
-        if (cursor.moveToFirst()) {
-            int hasVotedIndex = cursor.getColumnIndex(COLUMN_HAS_VOTED);
-            int hasVotedValue = cursor.getInt(hasVotedIndex);
-
-            if (hasVotedValue == 1) {
-                hasVoted = true;
-            } else {
-                // Check if the user has voted for all possible positions
-                Cursor candidateCursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_CANDIDATES, null);
-                if (candidateCursor.moveToFirst()) {
-                    int candidateCount = candidateCursor.getInt(0);
-                    Cursor votedPositionsCursor = db.rawQuery("SELECT COUNT(DISTINCT " + COLUMN_POSITION + ") FROM " + TABLE_VOTERS + " WHERE " + COLUMN_EMAIL + " = ?", new String[]{email});
-                    if (votedPositionsCursor.moveToFirst()) {
-                        int votedPositionsCount = votedPositionsCursor.getInt(0);
-                        hasVoted = (votedPositionsCount == candidateCount);
-                    }
-                    votedPositionsCursor.close();
-                }
-                candidateCursor.close();
-            }
-        }
-
-        cursor.close();
-        db.close();
-        return hasVoted;
     }
     public static String getColumnEmail() {
         return COLUMN_EMAIL;

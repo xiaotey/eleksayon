@@ -1,4 +1,5 @@
 package com.example.eleksayon;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +9,6 @@ import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.eleksayon.Candidate;
-
 import java.util.List;
 public class ViewPageAdapter extends RecyclerView.Adapter<ViewPageAdapter.ViewHolder> {
 
@@ -37,11 +35,6 @@ public class ViewPageAdapter extends RecyclerView.Adapter<ViewPageAdapter.ViewHo
         holder.voteCount.setText(String.valueOf(candidate.getVoteCount()));
         Bitmap bitmap = BitmapFactory.decodeFile(candidate.getImagePath());
         holder.candidateImage.setImageBitmap(bitmap);
-    }
-    public void updateVoteCount(int position, int voteCount) {
-        Candidate candidate = candidateList.get(position);
-        candidate.setVoteCount(voteCount);
-        notifyItemChanged(position);
     }
 
     @Override

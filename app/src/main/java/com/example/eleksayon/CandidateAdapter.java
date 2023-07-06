@@ -10,10 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,39 +42,27 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateAdapter.View
         holder.candidateName.setText(candidate.getFirstName() + " " + candidate.getLastName());
         holder.candidatePosition.setText(candidate.getPosition());
         holder.candidateDescription.setText(candidate.getDescription());
-        // Load the candidate image from storage and set it to the ImageView
         Bitmap bitmap = BitmapFactory.decodeFile(candidate.getImagePath());
         holder.candidateImage.setImageBitmap(bitmap);
-
-        // Check if the position is already voted, and disable the vote button
         if (votedPositions.contains(candidate.getPosition())) {
             holder.voteButton.setEnabled(false);
             Toast.makeText(context, "You have already voted for this position.", Toast.LENGTH_SHORT).show();
         } else {
-            // Enable the vote button
             holder.voteButton.setEnabled(true);
 
-            // Set a click listener for the vote button
             holder.voteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Check if the user has already voted for a candidate in the same position
                     for (Candidate votedCandidate : candidateList) {
                         if (votedCandidate.getPosition().equals(candidate.getPosition()) && votedPositions.contains(votedCandidate.getPosition())) {
                             Toast.makeText(context, "You can only vote for one candidate per position.", Toast.LENGTH_SHORT).show();
-                            return; // Exit the onClick method without registering the vote
+                            return;
                         }
                     }
 
-                    // Update the votedPositions list to mark this position as voted
                     votedPositions.add(candidate.getPosition());
-
-                    // Disable the vote button to prevent multiple votes for the same position
                     holder.voteButton.setEnabled(false);
-
-                    // Increment the vote count in the database
                     dbHandler.incrementVoteCount(candidate.getId());
-
                     Toast.makeText(context, "Vote counted successfully.", Toast.LENGTH_SHORT).show();
                 }
             });

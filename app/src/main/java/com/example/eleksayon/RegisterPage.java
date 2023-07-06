@@ -1,21 +1,14 @@
 package com.example.eleksayon;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
-import android.text.TextWatcher;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
-
 import com.example.eleksayon.databinding.ActivityRegisterPageBinding;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,12 +16,7 @@ public class RegisterPage extends AppCompatActivity implements AdapterView.OnIte
 
     ActivityRegisterPageBinding binding;
     DBHandler databaseHelper;
-
-        private EditText editTextTextPassword;
-        private EditText editTextTextPassword2;
-
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityRegisterPageBinding.inflate(getLayoutInflater());
@@ -51,10 +39,10 @@ public class RegisterPage extends AppCompatActivity implements AdapterView.OnIte
                     Toast.makeText(RegisterPage.this, "Please use My.IIT email only", Toast.LENGTH_SHORT).show();
                 } else {
                     if (password.equals(confirmPassword)){
-                        Boolean checkUserEmail = databaseHelper.checkEmail(email);
+                        boolean checkUserEmail = databaseHelper.checkEmail(email);
 
                         if (!checkUserEmail){
-                            Boolean insert = databaseHelper.insertData(email, password, id, course);
+                            boolean insert = databaseHelper.insertData(email, password, id, course);
 
                             if (insert){
                                 Toast.makeText(RegisterPage.this, "Signup successful", Toast.LENGTH_SHORT).show();
@@ -106,21 +94,5 @@ public class RegisterPage extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        // Do nothing
-    }
-
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void checkPasswordsMatch() {
-        String password = editTextTextPassword.getText().toString();
-        String confirmPassword = editTextTextPassword2.getText().toString();
-
-        if (password.equals(confirmPassword)) {
-            editTextTextPassword2.setError(null);
-        } else {
-            editTextTextPassword2.setError("Passwords do not match");
-        }
     }
 }
